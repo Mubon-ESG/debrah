@@ -1,4 +1,16 @@
 baseURL = 'https://mubon-esg.github.io/debrah/'
 languageCode = 'zh-tw'
-title = 'Mubon ESG 部落格'
+title = 'Debrah  ESG 部落格'
+
 theme = 'PaperMod'
+[[menu.main]]
+    name = "所有文章"
+    url = "posts/"
+    weight = 10
+[[menu.main]]
+    name = "標籤"
+    url = "tags/"
+    weight = 20
+    [params.homeInfoParams]
+    Title = "歡迎來到 Debrah 的 ESG 實驗室"
+    Content = "這裡記錄了我對永續發展與技術的點滴思考。"
