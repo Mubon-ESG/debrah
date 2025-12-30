@@ -1,0 +1,4 @@
+baseURL = 'https://mubon-esg.github.io/debrah/'
+languageCode = 'zh-tw'
+title = 'Mubon ESG 部落格'
+theme = 'PaperMod'
