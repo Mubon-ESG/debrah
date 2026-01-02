@@ -1,0 +1,9 @@
+/* 強制文章寬度與行距 */
+.main {
+    max-width: 750px !important;
+    margin: 0 auto !important;
+}
+.post-content {
+    line-height: 2.2 !important;
+    font-size: 19px !important;
+}
