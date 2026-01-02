@@ -1,25 +1,21 @@
-{{- define "main" }}
-<div style="background: white; width: 100%;">
-    <article style="max-width: 750px !important; margin: 40px auto !important; padding: 20px !important; line-height: 2.2 !important; font-size: 20px !important; color: #333 !important; font-family: sans-serif !important;">
-        <header>
-            <h1 style="font-size: 2.5rem; margin-bottom: 20px; color: #000 !important;">{{ .Title }}</h1>
-            <div style="color: #666; margin-bottom: 30px;">{{ .Date.Format "2006-01-02" }}</div>
-        </header>
-        <section style="all: initial; display: block; line-height: 2.2; font-size: 20px; font-family: sans-serif;">
-            {{ .Content }}
-        </section>
-    </article>
+ {{- define "main" }}
+<div style="background: #fff; width: 100%;">
+  <article class="post-single" style="max-width: 780px !important; margin: 40px auto !important; padding: 0 20px !important;">
+    <header class="post-header" style="margin-bottom: 40px;">
+      <h1 class="post-title" style="font-size: 32px !important; line-height: 1.4 !important; color: #1d1d1f !important;">{{ .Title }}</h1>
+      <div class="post-meta" style="color: #86868b; font-size: 14px; margin-top: 10px;">
+        {{- if .Date -}}{{ .Date.Format "2006-01-02" }}{{- end -}}
+      </div>
+    </header>
+    
+    <div class="post-content" style="line-height: 2.2 !important; font-size: 19px !important; color: #333 !important; text-align: justify !important;">
+      {{- .Content -}}
+    </div>
+  </article>
 </div>
 
 <style>
-    /* 最後的保險：如果上面的 style 被過濾，改用這個 CSS 強制覆蓋 */
-    body, .main, .post-content { 
-        max-width: none !important; 
-        padding: 0 !important; 
-    }
-    .post-content p { 
-        margin-bottom: 2rem !important; 
-        line-height: 2.2 !important; 
-    }
+  /* 額外補償：強制段落間距 */
+  .post-content p { margin-bottom: 28px !important; }
 </style>
 {{- end }}
