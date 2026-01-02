@@ -28,4 +28,19 @@ UseHugoToc: true
 
 以後我會在這裡分享關於 **ESG** 和技術的內容。
 
+<div style="max-width: 720px; margin: 0 auto; line-height: 2.2; font-size: 1.2rem;">
+
+（這裡放你原本的文章內容...）
+
+</div>
+
+<style>
+  /* 強制覆蓋主題，確保左右留白與行距 */
+  .post-content { 
+      max-width: 720px !important; 
+      margin: 0 auto !important; 
+      line-height: 2.2 !important; 
+  }
+  .post-content p { margin-bottom: 1.8em !important; }
+</style>
 
