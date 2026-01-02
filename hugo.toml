@@ -1,21 +1,9 @@
 baseURL = 'https://mubon-esg.github.io/debrah/'
-minify = true
+minify = false  # 先關掉壓縮，方便我們除錯
 languageCode = 'zh-tw'
-title = 'Debrah ESG Procurement Performance Coach 永續採購顧問 部落格'
+title = 'Debrah ESG Procurement Performance Coach'
 theme = 'PaperMod'
 
-# --- 這裡開始是修正過的選單設定 ---
-[[menu.main]]
-    name = "所有文章"
-    url = "posts/"
-    weight = 10
-
-[[menu.main]]
-    name = "標籤"
-    url = "tags/"
-    weight = 25
-
-# --- 這裡開始是修正過的參數設定 ---
 [params]
     env = "production"
 
@@ -23,6 +11,13 @@ theme = 'PaperMod'
     Title = "歡迎來到 Debrah 的 ESG 實驗室"
     Content = "這裡記錄了我對永續發展與技術的點滴思考。"
 
+[menu.main]
+    [[menu.main]]
+        name = "所有文章"
+        url = "posts/"
+        weight = 10
+
 [params.assets]
     disableHLJS = false
+
 
