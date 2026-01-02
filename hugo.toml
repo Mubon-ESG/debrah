@@ -1,7 +1,7 @@
 baseURL = 'https://mubon-esg.github.io/debrah/'
 minify = false
 languageCode = 'zh-tw'
-title = 'Debrah ESG 實驗室'
+title = 'Debrah ESG Procurement Performance 永續採購顧問'
 theme = 'PaperMod'
 
 [params]
@@ -20,5 +20,6 @@ theme = 'PaperMod'
     name = "標籤"
     url = "tags/"
     weight = 20
+
 
 
