@@ -1,0 +1,18 @@
+/* 讓內容往中間縮，產生左右大邊界 */
+.main {
+    max-width: 780px !important; /* 數字越小，左右邊界越寬 */
+    margin: 0 auto !important;
+    padding: 0 30px !important;
+}
+
+/* 讓行距變寬，閱讀更高級 */
+.post-content {
+    line-height: 2.2 !important; /* 行距加大 */
+    font-size: 19px !important;  /* 字體微調 */
+    text-align: justify;         /* 文字左右對齊 */
+}
+
+/* 增加段落間的距離 */
+.post-content p {
+    margin-bottom: 30px !important;
+}
