@@ -1,18 +1,16 @@
- baseURL = 'https://mubon-esg.github.io/debrah/'
+baseURL = 'https://mubon-esg.github.io/debrah/'
 minify = false
 languageCode = 'zh-tw'
-title = 'Debrah ESG Procurement Performance Coach'
+title = 'Debrah ESG 實驗室'
 theme = 'PaperMod'
 
 [params]
     env = "production"
-    description = "Debrah 的 ESG 永續採購顧問部落格"
 
 [params.homeInfoParams]
     Title = "歡迎來到 Debrah 的 ESG 實驗室"
     Content = "這裡記錄了我對永續發展與技術的點滴思考。"
 
-# 修正後的選單語法
 [[menu.main]]
     name = "所有文章"
     url = "posts/"
