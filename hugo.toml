@@ -18,8 +18,6 @@ theme = 'PaperMod'
 # --- 這裡開始是修正過的參數設定 ---
 [params]
     env = "production"
-    # 這行是關鍵！手動指定讀取 CSS 的路徑
-    customCSS = ["css/custom.css"]
 
 [params.homeInfoParams]
     Title = "歡迎來到 Debrah 的 ESG 實驗室"
@@ -27,3 +25,4 @@ theme = 'PaperMod'
 
 [params.assets]
     disableHLJS = false
+
