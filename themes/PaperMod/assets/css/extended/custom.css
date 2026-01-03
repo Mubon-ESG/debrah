@@ -1,20 +1,26 @@
- /* 1. 強制讓文章容器變窄，產生左右大邊界 */
-main article, .post-content {
-    max-width: 720px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 0 20px !important;
+/* 讓內容不要貼邊、可讀性更好 */
+.main {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
-/* 2. 強制加大行間距與段落距離 */
-.post-content p, .post-content li {
-    line-height: 2.2 !important;  /* 極舒適行距 */
-    margin-bottom: 25px !important; /* 段落間留白 */
-    font-size: 19px !important;     /* 稍微加大字體 */
+/* 文章內容的最佳化：字級、行距、段距 */
+.post-content {
+  font-size: 1.05rem;      /* 你也可改 1.1rem */
+  line-height: 1.85;       /* 行距更舒服 */
 }
 
-/* 3. 調整標題間距 */
-.post-content h2, .post-content h3 {
-    margin-top: 40px !important;
-    margin-bottom: 20px !important;
-} 
+/* 段落間距：你截圖中看得到你自己寫了 post-content p 的 margin，
+   我建議用這種「正常、好讀」的段距 */
+.post-content p {
+  margin: 1.05em 0;
+}
+
+/* 標題上下留白，避免擠在一起 */
+.post-content h2 { margin-top: 1.8em; margin-bottom: 0.6em; }
+.post-content h3 { margin-top: 1.4em; margin-bottom: 0.5em; }
+
+/* 讓正文寬度更像「閱讀欄位」，不會太寬也不會太窄 */
+.post-single {
+  max-width: 76ch;   /* 你想更寬可改 84ch */
+}
