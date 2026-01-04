@@ -1,34 +1,41 @@
-relativeURLs = true
-canonifyURLs = false
-uglyURLs = false
-
 baseURL = "https://mubon-esg.github.io/Debrah/"
 languageCode = "zh-tw"
 title = "Debrah ESG Procurement Performance｜永續採購顧問"
 theme = "PaperMod"
 
+# ✅ 保證會輸出 HTML（避免首頁變成 JSON/XML 或直接 404）
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML"]
+page = ["HTML"]
+
+# ✅ 避免 baseURL 大小寫造成連結跑掉
+relativeURLs = true
+canonifyURLs = false
+
 [params]
-  env = "production"
-  disableScrollToTop = false
-  disableSpecial1stPost = false
+env = "production"
 
 [params.homeInfoParams]
-  Title = "歡迎來到 Debrah 的 ESG 實驗室"
-  Content = "這裡記錄了我對永續發展與技術的點滴思考。"
+Title = "歡迎來到 Debrah 的 ESG 實驗室"
+Content = "這裡記錄了我對永續發展與技術的點滴思考。"
 
 [[menu.main]]
-  name = "所有文章"
-  url = "posts/"
-  weight = 10
+name = "所有文章"
+url = "/posts/"
+weight = 10
 
 [[menu.main]]
-  name = "標籤"
-  url = "tags/"
-  weight = 20
-  
+name = "標籤"
+url = "/tags/"
+weight = 20
+
 [taxonomies]
-  tag = "tags"
-  category = "categories"
+tag = "tags"
+category = "categories"
+
 
 
 
