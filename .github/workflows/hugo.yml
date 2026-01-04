@@ -33,7 +33,7 @@ jobs:
       - name: Build with Hugo
         run: |
           rm -rf public
-          hugo --minify --baseURL "https://mubon-esg.github.io/Debrah/" --config hugo.toml
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
 
           
       - name: Inspect build output
