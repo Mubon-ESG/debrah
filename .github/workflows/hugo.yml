@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -24,53 +24,19 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Inspect repo root
-        run: |
-          echo "===== pwd ====="
-          pwd
-          echo "===== ls -la ====="
-          ls -la
-          echo "===== show hugo.toml (first 160 lines) ====="
-          if [ -f hugo.toml ]; then
-            nl -ba hugo.toml | sed -n '1,160p'
-          else
-            echo "hugo.toml NOT FOUND in repo root!"
-            exit 1
-          fi
-          echo "===== find [outputs] occurrences ====="
-          grep -n "^\[outputs\]" -n hugo.toml || true
-          echo "===== find any [outputs* occurrences ====="
-          grep -n "^\[outputs" -n hugo.toml || true
-          echo "===== list config dir if exists ====="
-          ls -la config || true
-          find config -maxdepth 3 -type f -print || true
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "latest"
           extended: true
 
-      - name: Build with Hugo
+      - name: Build
         run: |
           hugo version
-          echo "===== list possible config files ====="
-          ls -la
-          ls -la config || true
-          find config -maxdepth 3 -type f -print || true
-
           rm -rf public
           hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          echo "===== public root ====="
+          ls -la public || true
 
-            
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
- 
+      - name
+::contentReference[oaicite:0]{index=0} 
