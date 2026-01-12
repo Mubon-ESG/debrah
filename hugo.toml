@@ -1,32 +1,24 @@
-disableKinds = []
 baseURL = "https://mubon-esg.github.io/Debrah/"
 languageCode = "zh-tw"
 title = "Debrah ESG Procurement Performance｜永續採購顧問"
 theme = "PaperMod"
 
+disableKinds = []
+
 [outputs]
 home = ["HTML"]
-page = ["HTML"]
 section = ["HTML"]
+page = ["HTML"]
 taxonomy = ["HTML"]
 term = ["HTML"]
-
-[params]
-env = "production"
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[[menu.main]]
-name = "所有文章"
-url = "/posts/"
-weight = 10
+[params]
+env = "production"
 
-[[menu.main]]
-name = "標籤"
-url = "/tags/"
-weight = 20
 
 
 
