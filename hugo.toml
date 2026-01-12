@@ -1,3 +1,4 @@
+disableKinds = []
 baseURL = "https://mubon-esg.github.io/Debrah/"
 languageCode = "zh-tw"
 title = "Debrah ESG Procurement Performance｜永續採購顧問"
@@ -26,6 +27,7 @@ weight = 10
 name = "標籤"
 url = "/tags/"
 weight = 20
+
 
 
 
