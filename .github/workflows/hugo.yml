@@ -53,12 +53,15 @@ jobs:
 
       - name: Build with Hugo
         run: |
+          hugo version
+          echo "===== list possible config files ====="
+          ls -la
+          ls -la config || true
+          find config -maxdepth 3 -type f -print || true
+
           rm -rf public
-          hugo \
-            --minify \
-            --ignoreConfig \
-            --baseURL "https://mubon-esg.github.io/Debrah/" \
-            --destination public
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+
             
   deploy:
     needs: build
