@@ -38,13 +38,37 @@ jobs:
         run: |
           hugo version
           rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
-          echo "===== public size ====="
-          du -sh public || true
-          echo "===== file count ====="
-          find public -type f | wc -l || true
+               - name: Build
+        run: |
+          set -e
+          hugo version
+
+          echo "===== repo root ====="
+          ls -la
+
+          echo "===== content tree ====="
+          ls -la content || true
+          find content -maxdepth 3 -type f -print || true
+
+          echo "===== themes ====="
+          ls -la themes || true
+          find themes -maxdepth 2 -type f -name theme.toml -o -name config.toml -o -name hugo.toml || true
+
+          echo "===== hugo.toml (first 120 lines) ====="
+          nl -ba hugo.toml | sed -n '1,120p'
+
+          echo "===== effective hugo config (filtered) ====="
+          hugo config --config hugo.toml | grep -E "disableKinds|outputs|theme|baseURL|publishDir" -n || true
+
+          echo "===== build ====="
+          rm -rf public
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --debug --printPathWarnings
+
           echo "===== public root ====="
           ls -la public || true
+          echo "===== find html ====="
+          find public -type f -name "*.html" -maxdepth 4 -print || true
+
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
