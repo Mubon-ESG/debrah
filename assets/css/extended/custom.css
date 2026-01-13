@@ -1,31 +1,33 @@
-/* === 閱讀性調整：行距 + 內文寬度 + 段落間距 === */
+ /* === 卡片式文章列表：更清楚、更好點 === */
+.post-entry {
+  padding: 18px 18px;
+  margin: 0 0 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
 
-/* 文章內容區（single page） */
+.post-entry .entry-header h2 {
+  line-height: 1.25;
+}
+
+.post-entry .entry-content {
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+/* 讓整張卡片更像可點擊 */
+.post-entry:hover {
+  transform: translateY(-1px);
+}
+
+/* 文章內文也順便更好讀 */
 .post-content {
   line-height: 1.85;
   font-size: 18px;
 }
-
-/* 段落距離 */
-.post-content p {
-  margin: 0 0 1.1em;
-}
-
-/* 列表更好讀 */
-.post-content li {
-  margin: 0.35em 0;
-}
-
-/* 文章頁面寬度（太窄/太寬都難讀；這個是舒服區間） */
 .main {
   max-width: 860px;
 }
-
-/* 手機上字略小、避免太擠 */
 @media (max-width: 768px) {
-  .post-content {
-    font-size: 16.5px;
-    line-height: 1.75;
-  }
+  .post-content { font-size: 16.5px; line-height: 1.75; }
 }
-
