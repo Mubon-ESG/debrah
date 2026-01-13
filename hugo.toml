@@ -10,6 +10,12 @@ category = "categories"
 [params]
 env = "production"
 customCSS = ["css/extended/custom.css"]
+mainSections = ["posts"]
+ShowReadingTime = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowShareButtons = true
+ShowCodeCopyButtons = true
 
 [params.homeInfoParams]
 Title = "歡迎來到 Debrah 的 ESG 實驗室"
@@ -19,14 +25,7 @@ paginate = 5  # 你用 Hugo 0.154 不吃 paginate；所以用新版：
 [pagination]
 pagerSize = 5
 
-[params]
-env = "production"
-mainSections = ["posts"]
-ShowReadingTime = true
-ShowPostNavLinks = true
-ShowBreadCrumbs = true
-ShowShareButtons = true
-ShowCodeCopyButtons = true
+
 
 
 
