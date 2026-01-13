@@ -17,12 +17,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -35,6 +39,10 @@ jobs:
           hugo version
           rm -rf public
           hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          echo "===== public size ====="
+          du -sh public || true
+          echo "===== file count ====="
+          find public -type f | wc -l || true
           echo "===== public root ====="
           ls -la public || true
 
@@ -45,6 +53,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     needs: build
     environment:
       name: github-pages
