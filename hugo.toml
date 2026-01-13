@@ -15,6 +15,19 @@ customCSS = ["css/extended/custom.css"]
 Title = "歡迎來到 Debrah 的 ESG 實驗室"
 Content = "這裡記錄了我對永續發展與技術的點滴思考。"
  
+paginate = 5  # 你用 Hugo 0.154 不吃 paginate；所以用新版：
+[pagination]
+pagerSize = 5
+
+[params]
+env = "production"
+mainSections = ["posts"]
+ShowReadingTime = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowShareButtons = true
+ShowCodeCopyButtons = true
+
 
 
 
