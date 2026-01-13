@@ -1,26 +1,31 @@
- /* 修復 PaperMod 列表卡片不可點：恢復 entry-link 覆蓋整張卡片 */
-.post-entry {
-  position: relative;
+/* === 閱讀性調整：行距 + 內文寬度 + 段落間距 === */
+
+/* 文章內容區（single page） */
+.post-content {
+  line-height: 1.85;
+  font-size: 18px;
 }
 
-.post-entry .entry-link {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: auto !important;
+/* 段落距離 */
+.post-content p {
+  margin: 0 0 1.1em;
 }
 
-.post-entry a {
-  pointer-events: auto !important;
-  cursor: pointer;
+/* 列表更好讀 */
+.post-content li {
+  margin: 0.35em 0;
 }
 
-/* 避免內容蓋住覆蓋層 */
-.post-entry .entry-header,
-.post-entry .entry-content,
-.post-entry .entry-footer {
-  position: relative;
-  z-index: 1;
+/* 文章頁面寬度（太窄/太寬都難讀；這個是舒服區間） */
+.main {
+  max-width: 860px;
 }
 
-body { outline: 5px solid red; }
+/* 手機上字略小、避免太擠 */
+@media (max-width: 768px) {
+  .post-content {
+    font-size: 16.5px;
+    line-height: 1.75;
+  }
+}
+
