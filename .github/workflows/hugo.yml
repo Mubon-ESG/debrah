@@ -35,6 +35,12 @@ jobs:
           hugo-version: latest
           extended: true
 
+      - name: Setup Go (for Hugo Modules)
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+
       - name: Find disableKinds/outputs in repo
         run: |
           echo "===== config files ====="
