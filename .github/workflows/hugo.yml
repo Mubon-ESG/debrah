@@ -18,25 +18,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
+      - name: Build (capture full log)
+        run: |
+          set -e
+          hugo version
+          rm -rf public
+          mkdir -p /tmp
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: latest
-          extended: true
+          # Run hugo and capture ALL output
+          bash -lc 'hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --buildDrafts --buildFuture 2>&1 | tee /tmp/hugo_build.log; exit ${PIPESTATUS[0]}'
 
-      - name: Build
-        run: hugo version && rm -rf public && hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          echo "===== public root ====="
+          ls -la public || true
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
+          echo "===== last 200 lines of hugo log ====="
+          tail -n 200 /tmp/hugo_build.log || true
 
   deploy:
     runs-on: ubuntu-latest
