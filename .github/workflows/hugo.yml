@@ -39,7 +39,6 @@ jobs:
           hugo version
           rm -rf public
                - name: Build
-        run: |
           set -e
           hugo version
 
