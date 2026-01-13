@@ -3,18 +3,14 @@ languageCode = "zh-tw"
 title = "Debrah ESG Procurement Performance｜永續採購顧問"
 theme = "PaperMod"
 
-paginate = 10
-
-[taxonomies]
-tag = "tags"
-category = "categories"
-
 [params]
 env = "production"
 
 [params.homeInfoParams]
 Title = "歡迎來到 Debrah 的 ESG 實驗室"
 Content = "這裡記錄了我對永續發展與技術的點滴思考。"
+
+
 
 
 
