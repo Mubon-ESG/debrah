@@ -52,6 +52,20 @@ jobs:
           ls -la themes/PaperMod/layouts/_default/single.html || true
           ls -la themes/PaperMod/layouts/_default/baseof.html || true
 
+      - name: Inspect PaperMod templates (must exist)
+        run: |
+          echo "===== PaperMod layouts dir ====="
+          ls -la themes/PaperMod || true
+          ls -la themes/PaperMod/layouts || true
+          echo "===== key template files ====="
+          ls -la themes/PaperMod/layouts/index.html || true
+          ls -la themes/PaperMod/layouts/_default/list.html || true
+          ls -la themes/PaperMod/layouts/_default/single.html || true
+          ls -la themes/PaperMod/layouts/_default/baseof.html || true
+          echo "===== count layouts files ====="
+          find themes/PaperMod/layouts -type f | wc -l || true
+
+
       - name: Build (capture full log even on failure)
         run: |
           set +e
