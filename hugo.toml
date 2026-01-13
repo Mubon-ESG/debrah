@@ -17,13 +17,18 @@ ShowBreadCrumbs = true
 ShowShareButtons = true
 ShowCodeCopyButtons = true
 
+# 卡片列表體驗
+ShowSummary = true
+SummaryLength = 90
+
 [params.homeInfoParams]
 Title = "歡迎來到 Debrah 的 ESG 實驗室"
 Content = "這裡記錄了我對永續發展與技術的點滴思考。"
  
-paginate = 5  # 你用 Hugo 0.154 不吃 paginate；所以用新版：
+paginate = 6  # 你用 Hugo 0.154 不吃 paginate；所以用新版：
 [pagination]
-pagerSize = 5
+pagerSize = 6
+
 
 
 
