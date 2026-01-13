@@ -39,6 +39,18 @@ jobs:
           echo "===== grep disableKinds/outputs (excluding themes) ====="
           grep -RIn --exclude-dir=.git --exclude-dir=themes -E "disableKinds|\\[outputs\\]|outputs[[:space:]]*=|paginate[[:space:]]*=" . || true
 
+      - name: Inspect PaperMod layouts
+        run: |
+          echo "===== themes/PaperMod exists? ====="
+          ls -la themes || true
+          ls -la themes/PaperMod || true
+          echo "===== list themes/PaperMod/layouts files (top 80) ====="
+          find themes/PaperMod/layouts -maxdepth 3 -type f -print | head -n 80 || true
+          echo "===== must-have templates ====="
+          ls -la themes/PaperMod/layouts/index.html || true
+          ls -la themes/PaperMod/layouts/_default/list.html || true
+          ls -la themes/PaperMod/layouts/_default/single.html || true
+          ls -la themes/PaperMod/layouts/_default/baseof.html || true
 
       - name: Build (capture full log even on failure)
         run: |
