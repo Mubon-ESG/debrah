@@ -35,7 +35,7 @@ jobs:
           extended: true
 
       - name: Build (and show output)
-        run: pwd && ls -la && echo "===== SHOW hugo.toml (first 200 lines) =====" && (test -f hugo.toml && nl -ba hugo.toml | sed -n '1,200p' || (echo "NO hugo.toml in repo root" && exit 1)) && echo "===== SHOW config files =====" && find . -maxdepth 3 -type f \( -iname "hugo.toml" -o -iname "config.toml" -o -iname "config.yaml" -o -iname "config.yml" -o -iname "config.json" \) -print && echo "===== HUGO CONFIG (first 120) =====" && hugo config --config hugo.toml | sed -n '1,120p' && rm -rf public && hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public && echo "===== public root =====" && ls -la public && echo "===== html files =====" && find public -maxdepth 4 -type f -name "*.html" -print
+        run: pwd && ls -la && echo "===== themes =====" && ls -la themes || true && echo "===== themes/PaperMod =====" && ls -la themes/PaperMod || true && echo "===== themes/papermod =====" && ls -la themes/papermod || true && echo "===== build =====" && rm -rf public && hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --debug --printPathWarnings && echo "===== public root =====" && ls -la public && echo "===== html files =====" && find public -maxdepth 4 -type f -name "*.html" -print
 
 
       - name: Upload Pages artifact
