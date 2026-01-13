@@ -1,5 +1,5 @@
 ---
-title: "我的第二篇文章：2026 ESG 我的故事起源"
+title: "ESG，玩真的，還是玩假的"
 date: 2026-01-02T12:00:00+08:00
 draft: false
 author: "Mubon"
