@@ -1,5 +1,4 @@
 ---
-title: "首頁"
+title: "所有文章"
 ---
 
-Home test.
