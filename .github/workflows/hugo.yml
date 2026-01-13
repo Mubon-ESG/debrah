@@ -17,32 +17,69 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Build (capture full log)
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Build (capture full log even on failure)
         run: |
-          set -e
+          set +e
           hugo version
           rm -rf public
           mkdir -p /tmp
 
-          # Run hugo and capture ALL output
-          bash -lc 'hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --buildDrafts --buildFuture 2>&1 | tee /tmp/hugo_build.log; exit ${PIPESTATUS[0]}'
+          echo "===== hugo.toml (first 220 lines) =====" | tee /tmp/hugo_build.log
+          (nl -ba hugo.toml | sed -n '1,220p') 2>&1 | tee -a /tmp/hugo_build.log
 
-          echo "===== public root ====="
-          ls -la public || true
+          echo "===== content files =====" | tee -a /tmp/hugo_build.log
+          (find content -maxdepth 5 -type f -print) 2>&1 | tee -a /tmp/hugo_build.log
 
-          echo "===== last 200 lines of hugo log ====="
-          tail -n 200 /tmp/hugo_build.log || true
+          echo "===== hugo build output =====" | tee -a /tmp/hugo_build.log
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --buildDrafts --buildFuture 2>&1 | tee -a /tmp/hugo_build.log
+          HUGO_EXIT=${PIPESTATUS[0]}
+
+          echo "===== public root =====" | tee -a /tmp/hugo_build.log
+          (ls -la public || true) 2>&1 | tee -a /tmp/hugo_build.log
+
+          echo "===== html files =====" | tee -a /tmp/hugo_build.log
+          (find public -maxdepth 5 -type f -name "*.html" -print || true) 2>&1 | tee -a /tmp/hugo_build.log
+
+          echo "===== LAST 200 LINES (the real error is here) ====="
+          tail -n 200 /tmp/hugo_build.log
+
+          exit $HUGO_EXIT
+
+      - name: Upload hugo build log artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo_build_log
+          path: /tmp/hugo_build.log
+
+      - name: Upload Pages artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    if: success()
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
 
 
