@@ -35,7 +35,8 @@ jobs:
           extended: true
 
       - name: Build (and show output)
-        run: hugo version && rm -rf public && hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public && echo "===== public root =====" && ls -la public && echo "===== html files =====" && find public -maxdepth 4 -type f -name "*.html" -print
+        run: hugo version && echo "===== EFFECTIVE CONFIG (outputs/disableKinds) =====" && hugo config --config hugo.toml | grep -E "disableKinds|outputs|home|page|section|taxonomy|term" -n || true && rm -rf public && hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public && echo "===== public root =====" && ls -la public && echo "===== html files =====" && find public -maxdepth 4 -type f -name "*.html" -print
+
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
