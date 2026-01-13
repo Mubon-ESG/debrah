@@ -19,21 +19,47 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Verify Hugo
+        run: |
+          which hugo
+          hugo version
+
       - name: Build (show full error)
         run: |
-          hugo version
-          echo "===== list content files ====="
-          find content -type f -maxdepth 4 -print || true
+          echo "===== pwd / root files ====="
+          pwd
+          ls -la
+
+          echo "===== hugo.toml ====="
+          test -f hugo.toml && (nl -ba hugo.toml | sed -n '1,200p') || (echo "NO hugo.toml" && exit 1)
+
+          echo "===== content files ====="
+          find content -maxdepth 4 -type f -print || true
+
           echo "===== build start ====="
           rm -rf public
           hugo --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public --logLevel debug --printPathWarnings
+
           echo "===== public root ====="
           ls -la public || true
+
           echo "===== html files ====="
           find public -maxdepth 4 -type f -name "*.html" -print || true
-
-      - name: Build (and show output)
-        run: hugo version && rm -rf public && hugo --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public && echo "===== public root =====" && ls -la public && echo "===== html files =====" && find public -maxdepth 4 -type f -name "*.html" -print
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -51,4 +77,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
