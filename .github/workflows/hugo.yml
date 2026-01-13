@@ -15,6 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -30,6 +31,14 @@ jobs:
         with:
           hugo-version: latest
           extended: true
+
+      - name: Find disableKinds/outputs in repo
+        run: |
+          echo "===== config files ====="
+          find . -maxdepth 4 -type f \( -iname "hugo.toml" -o -iname "config.toml" -o -iname "config.yaml" -o -iname "config.yml" -o -iname "config.json" \) -print
+          echo "===== grep disableKinds/outputs (excluding themes) ====="
+          grep -RIn --exclude-dir=.git --exclude-dir=themes -E "disableKinds|\\[outputs\\]|outputs[[:space:]]*=|paginate[[:space:]]*=" . || true
+
 
       - name: Build (capture full log even on failure)
         run: |
