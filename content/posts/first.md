@@ -1,20 +1,27 @@
 ---
-title: "Debrah 部落格的起源"
+title: "The Concept of Debrah Blog "
 date: 2026-01-02T12:00:00+08:00
 draft: false
 author: "Mubon"
 tags:
   - ESG
-  - 永續採購
+  - Green Procurement
+  - Sustainability
 ---
 
-**這是我的第一篇文章**
-
-關於我
+**About Debrah Blog**
 
 <!--more-->
 
-以後我會在這裡分享關於 **ESG** 和技術的內容。
+Debrah is a space for honest thinking about ESG.
+
+This blog focuses not on writing better sustainability reports,  
+but on understanding what creates **real, measurable performance** behind them.
+
+Here, I share insights from ESG, procurement, and healthcare supply chains—  
+where sustainability must stand up to decisions, not just narratives.
+
+
 
 
 
