@@ -1,6 +1,6 @@
 baseURL = "https://mubon-esg.github.io/Debrah/"
 languageCode = "zh-tw"
-title = "Debrah ESG Procurement Performance｜永續採購顧問"
+title = "Debrah ESG Lab ｜Procurement Performance"
 theme = "PaperMod"
 
 [taxonomies]
@@ -21,13 +21,18 @@ ShowCodeCopyButtons = true
 ShowSummary = true
 SummaryLength = 90
 
+
 [params.homeInfoParams]
-Title = "歡迎來到 Debrah 的 ESG 實驗室"
-Content = "這裡記錄了我對永續發展與技術的點滴思考。"
- 
-paginate = 6  # 你用 Hugo 0.154 不吃 paginate；所以用新版：
-[pagination]
-pagerSize = 6
+Title = "Where ESG Performance Becomes Visible"
+Content = """
+<nav style="margin-bottom:1rem; font-size:0.95rem;">
+  <strong>English</strong> ｜ <a href="/Debrah/ch/">中文</a>
+</nav>
+
+Debrah is a space for honest thinking about ESG.<br>
+This blog is not about writing better sustainability reports — it is about building <strong>real, measurable performance</strong> behind them.<br>
+Here, I share insights from ESG, procurement, and healthcare supply chains — where sustainability must stand up to decisions, not just narratives.
+"""
 
 
 
