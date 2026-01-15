@@ -24,15 +24,19 @@ SummaryLength = 90
 [params.homeInfoParams]
 Title = "Where ESG Performance Becomes Visible"
 Content = """
-English ｜ 中文（/Debrah/ch/）
+**English** ｜ [中文](/Debrah/ch/)
 
-Debrah is a space for honest thinking about ESG.
-This blog is not about writing better sustainability reports —
-it is about building real, measurable performance behind them.
+Debrah is a space for honest thinking about ESG.  
+This blog is not about writing better sustainability reports —  
+it is about building **real, measurable performance** behind them.
+
+Here, I share insights from ESG, procurement, and healthcare supply chains —  
+where sustainability must stand up to decisions, not just narratives.
 """
 
 
  
+
 
 
 
