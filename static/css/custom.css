@@ -7,3 +7,24 @@
     line-height: 2.2 !important;
     font-size: 19px !important;
 }
+/* ===== Home (PaperMod homeInfoParams) 字體放大 ===== */
+.first-entry .entry-header h1,
+.home-info .entry-header h1,
+.profile .profile_inner h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+}
+
+.first-entry .entry-content,
+.home-info .entry-content,
+.profile .profile_inner .content,
+.home-info p {
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+/* 讓首頁語言切換那行也好讀 */
+.first-entry .entry-content a,
+.home-info .entry-content a {
+  font-weight: 700;
+}
