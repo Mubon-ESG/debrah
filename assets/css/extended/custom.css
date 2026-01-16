@@ -1,6 +1,6 @@
  /* === 卡片式文章列表：更清楚、更好點 === */
 .post-entry {
-  padding: 18px 18px;
+  padding: 24px 24px;
   margin: 0 0 16px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
@@ -23,7 +23,7 @@
 /* 文章內文也順便更好讀 */
 .post-content {
   line-height: 1.85;
-  font-size: 18px;
+  font-size: 24px;
 }
 .main {
   max-width: 860px;
