@@ -17,6 +17,10 @@ ShowBreadCrumbs = true
 ShowShareButtons = true
 ShowCodeCopyButtons = true
 
+[params.assets]
+disableFingerprinting = true
+
+
 # 卡片列表體驗
 ShowSummary = true
 SummaryLength = 90
@@ -36,6 +40,7 @@ where sustainability must stand up to decisions, not just narratives.
 
 
  
+
 
 
 
