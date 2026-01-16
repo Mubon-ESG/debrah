@@ -23,6 +23,39 @@
 /* 文章內文也順便更好讀 */
 .post-content {
   line-height: 1.85;
+  font-size: 20px;
+}
+.main {
+  max-width: 860px;
+}
+@media (max-width: 768px) {
+  .post-content { font-size: 16.5px; line-height: 1.75; }
+}
+ /* === 卡片式文章列表：更清楚、更好點 === */
+.post-entry {
+  padding: 24px 24px;
+  margin: 0 0 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.post-entry .entry-header h2 {
+  line-height: 1.25;
+}
+
+.post-entry .entry-content {
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+/* 讓整張卡片更像可點擊 */
+.post-entry:hover {
+  transform: translateY(-1px);
+}
+
+/* 文章內文也順便更好讀 */
+.post-content {
+  line-height: 1.85;
   font-size: 24px;
 }
 .main {
@@ -30,4 +63,25 @@
 }
 @media (max-width: 768px) {
   .post-content { font-size: 16.5px; line-height: 1.75; }
+}
+/* ===== Home (PaperMod homeInfoParams) 字體放大 ===== */
+.first-entry .entry-header h1,
+.home-info .entry-header h1,
+.profile .profile_inner h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+}
+
+.first-entry .entry-content,
+.home-info .entry-content,
+.profile .profile_inner .content,
+.home-info p {
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+/* 讓首頁語言切換那行也好讀 */
+.first-entry .entry-content a,
+.home-info .entry-content a {
+  font-weight: 700;
 }
