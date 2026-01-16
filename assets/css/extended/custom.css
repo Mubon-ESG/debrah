@@ -85,3 +85,17 @@
 .home-info .entry-content a {
   font-weight: 700;
 }
+/* HomeInfo 字體放大 */
+.home-info .entry-header h1,
+.first-entry .entry-header h1 {
+  font-size: 2.4rem;
+  line-height: 1.15;
+}
+
+.home-info .entry-content,
+.first-entry .entry-content,
+.home-info .entry-content p,
+.first-entry .entry-content p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
