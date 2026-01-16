@@ -22,6 +22,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Debug config file
+        run: |
+          echo "===== pwd ====="
+          pwd
+          echo "===== ls ====="
+          ls -la
+          echo "===== show hugo.toml ====="
+          sed -n '1,120p' hugo.toml
+          echo "===== hugo config (search customCSS) ====="
+          hugo config --config hugo.toml | grep -n -i -E "customcss|homeinfoparams|theme|baseurl" || true
+
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
