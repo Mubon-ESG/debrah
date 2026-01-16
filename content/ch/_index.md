@@ -3,9 +3,7 @@ title: "Debrah｜中文"
 layout: "home"
 ---
 
-<nav style="margin-bottom:1rem; font-size:0.95rem;">
-  <a href="/Debrah/">English</a> ｜ <strong>中文</strong>
-</nav>
+**中文** ｜ [English](/Debrah/)
 
 ## 讓 ESG 的績效看得見
 
