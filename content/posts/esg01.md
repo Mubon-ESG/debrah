@@ -5,6 +5,7 @@ draft: false
 tags: ["ESG", "ESG Ratings", "Sustainability", "Procurement"]
 slug: "esg-performance-not-reporting"
 ---
+**English** ｜ [中文摘要](/Debrah/posts/esg01_ch/) ｜ [中文首頁](/Debrah/ch/)
 
 ## Opening
 
