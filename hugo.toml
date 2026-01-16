@@ -9,7 +9,6 @@ category = "categories"
 
 [params]
 env = "production"
-customCSS = ["css/extended/custom.css"]
 mainSections = ["posts"]
 ShowReadingTime = true
 ShowPostNavLinks = true
@@ -40,6 +39,7 @@ where sustainability must stand up to decisions, not just narratives.
 
 
  
+
 
 
 
