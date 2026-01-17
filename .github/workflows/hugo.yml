@@ -49,6 +49,12 @@ jobs:
         with:
           path: public
 
+      - name: Must have index.html
+        run: |
+          test -f public/index.html
+          echo "OK: public/index.html exists"
+
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
