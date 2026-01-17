@@ -30,38 +30,33 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Build with Hugo (diagnose)
+       - name: Build with Hugo (capture errors)
+        continue-on-error: true
         run: |
-          set -e
-          echo "===== hugo version ====="
-          hugo version
-
-          echo "===== list repo root ====="
+          echo "===== pwd ====="
+          pwd
+          echo "===== ls -la ====="
           ls -la
 
+          echo "===== hugo version ====="
+          hugo version || true
+
           echo "===== show hugo.toml ====="
-          sed -n '1,200p' hugo.toml
+          sed -n '1,200p' hugo.toml || true
 
-          echo "===== show content structure ====="
-          find content -maxdepth 3 -type f -print
+          echo "===== themes ====="
+          ls -la themes || true
+          ls -la themes/PaperMod || true
 
-          echo "===== hugo config (search disableKinds/outputs) ====="
-          hugo config --config hugo.toml | grep -n -i -E "disablekinds|outputs|outputformats|home|section|page|permalinks|theme" || true
-
-          echo "===== build ====="
+          echo "===== build (verbose) ====="
           rm -rf public
-          hugo --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v || true
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v
 
-          echo "===== list public ====="
+          echo "===== public root ====="
           ls -la public || true
 
-          echo "===== find index.html ====="
-          find public -maxdepth 3 -name "index.html" -print || true
-
-          echo "===== find any html ====="
+          echo "===== html files ====="
           find public -maxdepth 5 -type f -name "*.html" -print || true
-
-
 
 
       - name: Inspect build output
