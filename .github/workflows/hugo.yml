@@ -42,7 +42,7 @@ jobs:
           hugo version || true
 
           echo "===== show hugo.toml ====="
-          sed -n '1,200p' hugo.toml || true
+          sed -n '1,220p' hugo.toml || true
 
           echo "===== themes ====="
           ls -la themes || true
@@ -59,7 +59,6 @@ jobs:
           find public -maxdepth 5 -type f -name "*.html" -print || true
 
       - name: Upload artifact
-        if: ${{ hashFiles('public/**') != '' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
@@ -67,7 +66,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ hashFiles('public/**') != '' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -75,6 +73,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
 
 
