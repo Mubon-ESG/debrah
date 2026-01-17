@@ -32,7 +32,14 @@ jobs:
           sed -n '1,120p' hugo.toml
           echo "===== hugo config (search customCSS) ====="
           hugo config --config hugo.toml | grep -n -i -E "customcss|homeinfoparams|theme|baseurl" || true
-
+      - name: Find custom css in build output
+        run: |
+          echo "===== list public/css ====="
+          ls -la public/css || true
+          echo "===== find custom.css ====="
+          find public -maxdepth 6 -type f -iname "custom.css" -print
+          echo "===== find css/extended ====="
+          find public -maxdepth 10 -type f -path "*css/extended*" -print
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -52,6 +59,10 @@ jobs:
           hugo version
           rm -rf public
           hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          
+
+
+         
           echo "===== public root ====="
           ls -la public
           echo "===== html files (top) ====="
