@@ -1,4 +1,4 @@
-name: Deploy Hugo site to Pages
+ name: Deploy Hugo site to Pages
 
 on:
   push:
@@ -11,8 +11,9 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,49 +30,37 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Debug repo structure
-        run: |
-          echo "===== pwd ====="
-          pwd
-          echo "===== ls -la (repo root) ====="
-          ls -la
-          echo "===== tree (top 2 levels) ====="
-          find . -maxdepth 2 -type d -print
-          echo "===== list key files ====="
-          ls -la hugo.toml || true
-          ls -la config.toml || true
-          ls -la content || true
-          ls -la themes || true
-          ls -la themes/PaperMod || true
-
-      - name: Build with Hugo (verbose)
+      - name: Build with Hugo
         run: |
           set -e
           hugo version
           rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
 
       - name: Inspect build output
         run: |
-          echo "===== ls -la public ====="
+          echo "===== public root ====="
           ls -la public
           echo "===== html files ====="
-          find public -maxdepth 4 -type f -name "*.html" -print
-          echo "===== css files ====="
-          find public -maxdepth 5 -type f -name "*.css" -print
+          find public -maxdepth 5 -type f -name "*.html" -print
 
-      
- 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
-    timeout-minutes: 20
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
+
+      
 
 
 
