@@ -14,28 +14,16 @@ mainSections = ["posts"]
 Title = "Where ESG Performance Becomes Visible"
 Content = """
 **English** ｜ [中文](/Debrah/ch/)
-
-Debrah is a space for honest thinking about ESG.  
-This blog is not about writing better sustainability reports —  
-it is about building **real, measurable performance** behind them.
 """
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[[menu.main]]
-name = "All Posts"
-url = "posts/"
-weight = 10
-
-[[menu.main]]
-name = "Tags"
-url = "tags/"
-weight = 20
 
 
  
+
 
 
 
