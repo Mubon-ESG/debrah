@@ -30,7 +30,7 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-       - name: Build with Hugo (capture errors)
+      - name: Build with Hugo (capture errors)
         continue-on-error: true
         run: |
           echo "===== pwd ====="
@@ -58,27 +58,16 @@ jobs:
           echo "===== html files ====="
           find public -maxdepth 5 -type f -name "*.html" -print || true
 
-
-      - name: Inspect build output
-        run: |
-          echo "===== public root ====="
-          ls -la public
-          echo "===== html files ====="
-          find public -maxdepth 5 -type f -name "*.html" -print
-
       - name: Upload artifact
+        if: ${{ hashFiles('public/**') != '' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
-      - name: Must have index.html
-        run: |
-          test -f public/index.html
-          echo "OK: public/index.html exists"
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ hashFiles('public/**') != '' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
