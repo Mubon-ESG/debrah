@@ -13,65 +13,55 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Debug config file
-        run: |
-          echo "===== pwd ====="
-          pwd
-          echo "===== ls ====="
-          ls -la
-          echo "===== show hugo.toml ====="
-          sed -n '1,120p' hugo.toml
-          echo "===== hugo config (search customCSS) ====="
-          hugo config --config hugo.toml | grep -n -i -E "customcss|homeinfoparams|theme|baseurl" || true
-      - name: Find custom css in build output
-        run: |
-          echo "===== list public/css ====="
-          ls -la public/css || true
-          echo "===== find custom.css ====="
-          find public -maxdepth 6 -type f -iname "custom.css" -print
-          echo "===== find css/extended ====="
-          find public -maxdepth 10 -type f -path "*css/extended*" -print
+        with:
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: latest
+          hugo-version: "latest"
           extended: true
 
-      - name: Fetch PaperMod theme (fresh clone)
+      - name: Debug repo structure
         run: |
-          rm -rf themes/PaperMod
-          git clone --depth 1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
-          ls -la themes/PaperMod
-          ls -la themes/PaperMod/layouts | head -n 50
+          echo "===== pwd ====="
+          pwd
+          echo "===== ls -la (repo root) ====="
+          ls -la
+          echo "===== tree (top 2 levels) ====="
+          find . -maxdepth 2 -type d -print
+          echo "===== list key files ====="
+          ls -la hugo.toml || true
+          ls -la config.toml || true
+          ls -la content || true
+          ls -la themes || true
+          ls -la themes/PaperMod || true
 
-      - name: Build
+      - name: Build with Hugo (verbose)
         run: |
+          set -e
           hugo version
           rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
-          
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v
 
-
-         
-          echo "===== public root ====="
+      - name: Inspect build output
+        run: |
+          echo "===== ls -la public ====="
           ls -la public
-          echo "===== html files (top) ====="
-          find public -maxdepth 4 -type f -name "*.html" -print | head -n 80
+          echo "===== html files ====="
+          find public -maxdepth 4 -type f -name "*.html" -print
+          echo "===== css files ====="
+          find public -maxdepth 5 -type f -name "*.css" -print
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
+      
+ 
 
   deploy:
     runs-on: ubuntu-latest
