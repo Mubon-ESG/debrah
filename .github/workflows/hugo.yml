@@ -30,12 +30,39 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Build with Hugo
+      - name: Build with Hugo (diagnose)
         run: |
           set -e
+          echo "===== hugo version ====="
           hugo version
+
+          echo "===== list repo root ====="
+          ls -la
+
+          echo "===== show hugo.toml ====="
+          sed -n '1,200p' hugo.toml
+
+          echo "===== show content structure ====="
+          find content -maxdepth 3 -type f -print
+
+          echo "===== hugo config (search disableKinds/outputs) ====="
+          hugo config --config hugo.toml | grep -n -i -E "disablekinds|outputs|outputformats|home|section|page|permalinks|theme" || true
+
+          echo "===== build ====="
           rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          hugo --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v || true
+
+          echo "===== list public ====="
+          ls -la public || true
+
+          echo "===== find index.html ====="
+          find public -maxdepth 3 -name "index.html" -print || true
+
+          echo "===== find any html ====="
+          find public -maxdepth 5 -type f -name "*.html" -print || true
+
+
+
 
       - name: Inspect build output
         run: |
