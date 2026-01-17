@@ -23,35 +23,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Build with Hugo (show errors)
-        run: |
-          echo "===== hugo version ====="
-          hugo version
-
-          echo "===== build (verbose) ====="
-          rm -rf public
-          set +e
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public -v
-          HUGO_EXIT=$?
-          set -e
-
-          echo "===== hugo exit code ====="
-          echo $HUGO_EXIT
-
-          echo "===== list repo root ====="
-          ls -la
-
-          echo "===== themes ====="
-          ls -la themes || true
-          ls -la themes/PaperMod || true
-
-          echo "===== content files ====="
-          find content -maxdepth 3 -type f -print || true
-
-          echo "===== public root ====="
-          ls -la public || true
-
-          exit $HUGO_EXIT
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -59,16 +30,15 @@ jobs:
           hugo-version: "latest"
           extended: true
 
+      - name: Build
+        run: |
+          rm -rf public
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
 
       - name: Upload artifact
-        if: ${{ always() }}
-        run: |
-          if [ -d "public" ]; then
-            echo "public exists, uploading..."
-          else
-            echo "public does NOT exist. Build failed before output."
-            exit 1
-          fi
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
   deploy:
     needs: build
@@ -80,6 +50,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
 
 
