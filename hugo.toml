@@ -12,9 +12,7 @@ mainSections = ["posts"]
 
 [params.homeInfoParams]
 Title = "Where ESG Performance Becomes Visible"
-Content = """
-**English** ｜ [中文](/Debrah/ch/)
-"""
+Content = "English | 中文"
 
 [taxonomies]
 tag = "tags"
@@ -23,6 +21,7 @@ category = "categories"
 
 
  
+
 
 
 
