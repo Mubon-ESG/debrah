@@ -1,28 +1,14 @@
 baseURL = "https://mubon-esg.github.io/Debrah/"
-languageCode = "ch-tw"
-title = "Debrah ESG Lab ｜Procurement Performance"
+languageCode = "zh-tw"
+title = "Debrah ESG Procurement Performance｜永續採購顧問"
 theme = "PaperMod"
 
-[taxonomies]
-tag = "tags"
-category = "categories"
+[pagination]
+pagerSize = 10
 
 [params]
 env = "production"
 mainSections = ["posts"]
-ShowReadingTime = true
-ShowPostNavLinks = true
-ShowBreadCrumbs = true
-ShowShareButtons = true
-ShowCodeCopyButtons = true
-
-[params.assets]
-disableFingerprinting = true
-
-
-# 卡片列表體驗
-ShowSummary = true
-SummaryLength = 90
 
 [params.homeInfoParams]
 Title = "Where ESG Performance Becomes Visible"
@@ -32,13 +18,25 @@ Content = """
 Debrah is a space for honest thinking about ESG.  
 This blog is not about writing better sustainability reports —  
 it is about building **real, measurable performance** behind them.
-
-Here, I share insights from ESG, procurement, and healthcare supply chains —  
-where sustainability must stand up to decisions, not just narratives.
 """
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[[menu.main]]
+name = "All Posts"
+url = "posts/"
+weight = 10
+
+[[menu.main]]
+name = "Tags"
+url = "tags/"
+weight = 20
 
 
  
+
 
 
 
