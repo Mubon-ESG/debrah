@@ -1,7 +1,11 @@
 baseURL = "https://mubon-esg.github.io/Debrah/"
 languageCode = "zh-tw"
 title = "Debrah ESG Procurement Performance｜永續採購顧問"
-theme = "PaperMod"
+
+# ✅ 用 Hugo Module 方式載入 PaperMod（不要再靠 themes/ 夾）
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
 
 [pagination]
 pagerSize = 10
@@ -19,8 +23,8 @@ tag = "tags"
 category = "categories"
 
 
-
  
+
 
 
 
