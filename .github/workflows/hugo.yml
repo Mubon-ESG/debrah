@@ -31,16 +31,22 @@ jobs:
           hugo-version: "latest"
           extended: true
         
+    
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
           go-version: "1.22"
 
+      - name: Hugo mod get
+        run: |
+          hugo mod get -u
 
+     
       - name: Build
         run: |
           rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+          hugo --gc --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
