@@ -21,32 +21,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           fetch-depth: 0
-          
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "latest"
           extended: true
-        
-    
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.22"
 
-      - name: Hugo mod get
-        run: |
-          hugo mod get -u
-
-     
       - name: Build
         run: |
           rm -rf public
-          hugo --gc --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
-
+          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -63,6 +50,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
 
 
