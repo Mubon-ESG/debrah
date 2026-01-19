@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <h1 style="margin:0 0 12px 0;">{{ .Site.Title }}</h1>
+
+  {{ with .Site.GetPage "section" "posts" }}
+    <div style="margin:18px 0 10px 0;font-weight:700;">Latest posts</div>
+    <ul style="padding-left:18px;">
+      {{ range first 10 .Pages }}
+        <li style="margin:8px 0;">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <small style="opacity:.7;"> — {{ .Date.Format "2006-01-02" }}</small>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>No posts found under <code>content/posts</code>.</p>
+  {{ end }}
+{{ end }}
