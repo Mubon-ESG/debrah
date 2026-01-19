@@ -29,6 +29,10 @@ jobs:
         with:
           hugo-version: "latest"
           extended: true
+          
+      - name: Show Hugo config
+        run: |
+          hugo config | sed -n '1,200p'
 
       - name: Build
         run: |
