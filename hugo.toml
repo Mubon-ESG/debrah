@@ -8,25 +8,17 @@ pagerSize = 10
 
 [params]
 env = "production"
-mainSections = ["posts"]
-
-[params.homeInfoParams]
-Title = "Where ESG Performance Becomes Visible"
-Content = "English | 中文"
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
 
 
 
 
  
+
 
 
 
