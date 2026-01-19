@@ -6,21 +6,23 @@ theme = "PaperMod"
 [pagination]
 pagerSize = 10
 
-[params]
-env = "production"
-customCSS = ["css/custom.css"]
-
-
-
 [taxonomies]
 tag = "tags"
 category = "categories"
+
+[outputs]
+home = ["HTML"]
+section = ["HTML"]
+page = ["HTML"]
+taxonomy = ["HTML"]
+term = ["HTML"]
 
 
 
 
 
  
+
 
 
 
