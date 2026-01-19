@@ -36,8 +36,8 @@ jobs:
 
       - name: Build
         run: |
-          rm -rf public
-          hugo --minify --config hugo.toml --baseURL "https://mubon-esg.github.io/Debrah/" --destination public
+         rm -rf public
+         hugo --minify --destination public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
